@@ -46,10 +46,6 @@ public class UserService {
             UserEntity saved = userRepository.save(entity);
             return User.fromEntity(saved);
         }
-
-
-
-
     }
 
     public void deleteUser(long id){

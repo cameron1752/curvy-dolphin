@@ -22,7 +22,7 @@ public class SecurityFilter {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/public/**").permitAll()
-                        .requestMatchers("/v1/users/**").permitAll()
+                        .requestMatchers("/v1/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2

@@ -9,9 +9,14 @@ public enum ErrorMessages {
             1001,
             "USER_NOT_FOUND"
     ),
+    VIDEO_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            1002,
+            "VIDEO_NOT_FOUND"
+    ),
     MISSING_REQUEST_HEADER(
             HttpStatus.BAD_REQUEST,
-            1002,
+            1003,
             "MISSING_REQUEST_HEADER"
     );
 

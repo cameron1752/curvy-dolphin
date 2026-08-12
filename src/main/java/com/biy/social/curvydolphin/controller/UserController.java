@@ -41,7 +41,7 @@ public class UserController {
                                                           @RequestHeader(value = "user_id") long id){
         userService.deleteUser(id);
         Map<String, String> response = new HashMap<String, String>();
-        response.put("message", "User deleted");
+        response.put("message", "User deleted with ID: " + id);
         return ResponseEntity.ok(response);
     }
 

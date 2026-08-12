@@ -7,8 +7,7 @@ import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import static com.biy.social.curvydolphin.exceptions.ErrorMessages.MISSING_REQUEST_HEADER;
-import static com.biy.social.curvydolphin.exceptions.ErrorMessages.USER_NOT_FOUND;
+import static com.biy.social.curvydolphin.exceptions.ErrorMessages.*;
 
 @ControllerAdvice
 @Slf4j
@@ -16,12 +15,21 @@ public class ErrorHandler {
     ErrorMessages errorMessages;
 
     @ExceptionHandler(UserException.class)
-    private ResponseEntity<ApiError> handleCurvyDolphinException(UserException ex){
+    private ResponseEntity<ApiError> UserException(UserException ex){
         ApiError error = new ApiError(USER_NOT_FOUND.getStatus(),
                 USER_NOT_FOUND.getError_code(),
                 USER_NOT_FOUND.getError(),
                 ex.getMessage());
         return ResponseEntity.status(USER_NOT_FOUND.getStatus()).body(error);
+    }
+
+    @ExceptionHandler(VideoException.class)
+    private ResponseEntity<ApiError> VideoException(VideoException ex) {
+        ApiError error = new ApiError(VIDEO_NOT_FOUND.getStatus(),
+                VIDEO_NOT_FOUND.getError_code(),
+                VIDEO_NOT_FOUND.getError(),
+                ex.getMessage());
+        return ResponseEntity.status(VIDEO_NOT_FOUND.getStatus()).body(error);
     }
 
     @ExceptionHandler(MissingRequestHeaderException.class)
