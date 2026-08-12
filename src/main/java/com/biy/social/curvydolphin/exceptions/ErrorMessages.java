@@ -1,0 +1,39 @@
+package com.biy.social.curvydolphin.exceptions;
+
+import org.springframework.http.HttpStatus;
+
+public enum ErrorMessages {
+
+    USER_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            1001,
+            "USER_NOT_FOUND"
+    ),
+    MISSING_REQUEST_HEADER(
+            HttpStatus.BAD_REQUEST,
+            1002,
+            "MISSING_REQUEST_HEADER"
+    );
+
+    private final HttpStatus status;
+    private final int error_code;
+    private final String error;
+
+    ErrorMessages(HttpStatus status, int error_code, String error) {
+        this.status = status;
+        this.error_code = error_code;
+        this.error = error;
+    }
+
+    public int getStatus() {
+        return status.value();
+    }
+
+    public int getError_code() {
+        return error_code;
+    }
+
+    public String getError(){
+        return error;
+    }
+}
