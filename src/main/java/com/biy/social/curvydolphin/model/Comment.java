@@ -27,7 +27,7 @@ public class Comment {
         entity.setVideoId(videoId);
         entity.setUserId(userId);
         entity.setText(text);
-        entity.setCreatedAt(createdAt);
+        entity.setCreatedAt(LocalDateTime.now());
 
         return entity;
     }

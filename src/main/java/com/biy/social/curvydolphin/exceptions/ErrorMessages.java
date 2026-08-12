@@ -14,9 +14,19 @@ public enum ErrorMessages {
             1002,
             "VIDEO_NOT_FOUND"
     ),
+    COMMENT_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            1003,
+            "COMMENT_NOT_FOUND"
+    ),
+    LIKE_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            1004,
+            "LIKE_NOT_FOUND"
+    ),
     MISSING_REQUEST_HEADER(
             HttpStatus.BAD_REQUEST,
-            1003,
+            1005,
             "MISSING_REQUEST_HEADER"
     );
 

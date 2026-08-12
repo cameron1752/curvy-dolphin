@@ -32,6 +32,24 @@ public class ErrorHandler {
         return ResponseEntity.status(VIDEO_NOT_FOUND.getStatus()).body(error);
     }
 
+    @ExceptionHandler(CommentsException.class)
+    private ResponseEntity<ApiError> CommentsException(CommentsException ex) {
+        ApiError error = new ApiError(COMMENT_NOT_FOUND.getStatus(),
+                COMMENT_NOT_FOUND.getError_code(),
+                COMMENT_NOT_FOUND.getError(),
+                ex.getMessage());
+        return ResponseEntity.status(COMMENT_NOT_FOUND.getStatus()).body(error);
+    }
+
+    @ExceptionHandler(LikesException.class)
+    private ResponseEntity<ApiError> LikesException(LikesException ex) {
+        ApiError error = new ApiError(LIKE_NOT_FOUND.getStatus(),
+                LIKE_NOT_FOUND.getError_code(),
+                LIKE_NOT_FOUND.getError(),
+                ex.getMessage());
+        return ResponseEntity.status(LIKE_NOT_FOUND.getStatus()).body(error);
+    }
+
     @ExceptionHandler(MissingRequestHeaderException.class)
     public ResponseEntity<ApiError> handleMissingRequestHeaderException(MissingRequestHeaderException ex){
         log.error("Missing request header. {} is required", ex.getHeaderName());
