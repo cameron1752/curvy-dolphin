@@ -1,5 +1,7 @@
 package com.biy.social.curvydolphin.controller;
 
+import com.biy.social.curvydolphin.exceptions.VideoException;
+import com.biy.social.curvydolphin.exceptions.VideoInteractionsException;
 import com.biy.social.curvydolphin.model.VideoInteraction;
 import com.biy.social.curvydolphin.constants.VideoInteractionEventType;
 import com.biy.social.curvydolphin.service.VideoInteractionsService;
@@ -55,7 +57,7 @@ public class VideoInteractionController {
             return ResponseEntity.ok(interactionsService.getInteractionsByUser(userId));
         }
 
-        return ResponseEntity.badRequest().build();
+        throw new VideoInteractionsException("interaction_id, event_type + video_id, event_type + user_id, video_id, or user_id are required");
     }
 
     @PostMapping

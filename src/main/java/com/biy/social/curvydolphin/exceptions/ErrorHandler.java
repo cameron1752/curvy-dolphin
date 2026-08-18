@@ -1,5 +1,6 @@
 package com.biy.social.curvydolphin.exceptions;
 
+import com.biy.social.curvydolphin.constants.ErrorMessages;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import static com.biy.social.curvydolphin.exceptions.ErrorMessages.*;
+import static com.biy.social.curvydolphin.constants.ErrorMessages.*;
 
 @ControllerAdvice
 @Slf4j
@@ -48,6 +49,15 @@ public class ErrorHandler {
                 LIKE_NOT_FOUND.getError(),
                 ex.getMessage());
         return ResponseEntity.status(LIKE_NOT_FOUND.getStatus()).body(error);
+    }
+
+    @ExceptionHandler(VideoInteractionsException.class)
+    private ResponseEntity<ApiError> videoInteractionsException(VideoInteractionsException ex){
+        ApiError error = new ApiError(VIDEO_INTERACTION_NOT_FOUND.getStatus(),
+                VIDEO_INTERACTION_NOT_FOUND.getError_code(),
+                VIDEO_INTERACTION_NOT_FOUND.getError(),
+                ex.getMessage());
+        return ResponseEntity.status(VIDEO_INTERACTION_NOT_FOUND.getStatus()).body(error);
     }
 
     @ExceptionHandler(MissingRequestHeaderException.class)

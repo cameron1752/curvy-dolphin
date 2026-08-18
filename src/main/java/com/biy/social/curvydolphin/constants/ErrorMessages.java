@@ -1,4 +1,4 @@
-package com.biy.social.curvydolphin.exceptions;
+package com.biy.social.curvydolphin.constants;
 
 import org.springframework.http.HttpStatus;
 
@@ -24,9 +24,14 @@ public enum ErrorMessages {
             1004,
             "LIKE_NOT_FOUND"
     ),
+    VIDEO_INTERACTION_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            1005,
+            "VIDEO_INTERACTION_NOT_FOUND"
+    ),
     MISSING_REQUEST_HEADER(
             HttpStatus.BAD_REQUEST,
-            1005,
+            1006,
             "MISSING_REQUEST_HEADER"
     );
 
