@@ -9,5 +9,8 @@ public class UserException extends RuntimeException {
     public UserException(long id){
         super("User with id [" + id + "] not found");
     }
+    public UserException(String id){
+        super("User with provider_id [" + id + "] not found");
+    }
 
 }

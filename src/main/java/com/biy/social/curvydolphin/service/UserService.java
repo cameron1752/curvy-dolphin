@@ -24,6 +24,16 @@ public class UserService {
         }
     }
 
+    public User getByProviderId(String provider_id) throws UserException{
+        Optional<UserEntity> userEntity = userRepository.findByProviderId(provider_id);
+
+        if (userEntity.isEmpty()){
+            throw new UserException(provider_id);
+        } else {
+            return User.fromEntity(userEntity.get());
+        }
+    }
+
     public User createUser(User user) {
         UserEntity saved = userRepository.save(user.toEntity());
 

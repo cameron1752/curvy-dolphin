@@ -33,6 +33,11 @@ public enum ErrorMessages {
             HttpStatus.BAD_REQUEST,
             1006,
             "MISSING_REQUEST_HEADER"
+    ),
+    AUTHORIZATION_INVALID(
+            HttpStatus.UNAUTHORIZED,
+            1007,
+            "AUTHORIZATION_INVALID"
     );
 
     private final HttpStatus status;
@@ -56,4 +61,5 @@ public enum ErrorMessages {
     public String getError(){
         return error;
     }
+
 }

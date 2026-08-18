@@ -4,6 +4,7 @@ import com.biy.social.curvydolphin.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.access.expression.DenyAllPermissionEvaluator;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class User {
     private Long user_id;
+    private String providerId;
     private String username;
     private String email;
     private String name;
@@ -20,6 +22,7 @@ public class User {
 
     public static User fromEntity(UserEntity userEntity){
         return new User(userEntity.getUserId(),
+                userEntity.getProviderId(),
                 userEntity.getUsername(),
                 userEntity.getEmail(),
                 userEntity.getName(),
@@ -30,6 +33,7 @@ public class User {
     public UserEntity toEntity(){
         UserEntity entity = new UserEntity();
 
+        entity.setProviderId(this.providerId);
         entity.setUsername(this.username);
         entity.setEmail(this.email);
         entity.setName(this.name);

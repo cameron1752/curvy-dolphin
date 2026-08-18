@@ -2,7 +2,7 @@
     config:
       import: optional:application-secret.yaml
     application:
-      name: financeapp
+      name: curvy-dolphin
     datasource:
       # Connection URL (Default PostgreSQL port is 5432)
       url: jdbc:postgresql://localhost:5432/cam

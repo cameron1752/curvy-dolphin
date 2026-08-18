@@ -12,7 +12,7 @@ CREATE TABLE curvy_dolphin.videos (
                                       location_id    BIGINT,
                                       caption        TEXT,
                                       created_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
-                                      visibility     VARCHAR(20) NOT NULL DEFAULT 'public',
+                                      visibility     VARCHAR(20) NOT NULL DEFAULT 'PUBLIC',
 
                                       CONSTRAINT fk_videos_user
                                           FOREIGN KEY (user_id) REFERENCES curvy_dolphin.users (user_id),

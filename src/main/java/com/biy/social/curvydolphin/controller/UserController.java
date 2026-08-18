@@ -1,6 +1,7 @@
 package com.biy.social.curvydolphin.controller;
 
 import com.biy.social.curvydolphin.model.User;
+import com.biy.social.curvydolphin.service.AuthorizationService;
 import com.biy.social.curvydolphin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +19,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    AuthorizationService authorizationService;
+
     @GetMapping
     public ResponseEntity<User> getUser(@RequestHeader(value = "traceId") String traceId,
-                                         @RequestHeader(value = "user_id") long id){
-        return ResponseEntity.ok(userService.getUserById(id));
+                                         @RequestHeader(value = "user_id", required = false) long id){
+        if (id == 0){
+            return ResponseEntity.ok(authorizationService.getCurrentAccount());
+        } else {
+            return ResponseEntity.ok(userService.getUserById(id));
+        }
     }
 
     @PostMapping
