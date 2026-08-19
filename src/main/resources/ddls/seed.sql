@@ -17,7 +17,9 @@ VALUES
   (4, 'alex.r', 'google-oauth2|1000000004', 'alex.r@example.com', 'Alex Rivera', 'https://cdn.curvydolphin.com/avatars/alexr.png', '2026-06-17 09:30:00'::timestamp),
   (5, 'mia.p', 'google-oauth2|1000000005', 'mia.p@example.com', 'Mia Parker', 'https://cdn.curvydolphin.com/avatars/miap.png', '2026-06-18 11:20:00'::timestamp),
   (6, 'chris.d', 'google-oauth2|1000000006', 'chris.d@example.com', 'Chris Davis', 'https://cdn.curvydolphin.com/avatars/chrisd.png', '2026-06-19 14:10:00'::timestamp);
-
+1	"cameron1752"	"48843726"		"Cameron Knickerbocker"	"https://avatars.githubusercontent.com/u/48843726?v=4"	"2026-08-18 12:06:42.552868"
+2	"camks12@gmail.com"	"110160546422428323400"		"Cameron Knickerbocker"	"https://lh3.googleusercontent.com/a/ACg8ocIWrDDUt6NyQ-tfEkNX-H54WazMGAMboMOtUgSPzLzdkMlu4fS3=s96-c"	"2026-08-19 09:12:42.983344"
+3	"camknickerbocker@gmail.com"	"109722110280394943600"		"Cam Knickerbocker"	"https://lh3.googleusercontent.com/a/ACg8ocJXUn9QgqcjwGMh4scNjksu3twzwIxNpVBn61cUXmqARP-JCw=s96-c"	"2026-08-19 09:13:17.313805"
 SELECT setval(
   pg_get_serial_sequence('curvy_dolphin.users', 'user_id'),
   (SELECT MAX(user_id) FROM curvy_dolphin.users)
