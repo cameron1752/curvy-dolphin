@@ -3,6 +3,8 @@ package com.biy.social.curvydolphin.service;
 import com.biy.social.curvydolphin.entity.UserEntity;
 import com.biy.social.curvydolphin.entity.VideoEntity;
 import com.biy.social.curvydolphin.exceptions.UserException;
+import com.biy.social.curvydolphin.model.Feed;
+import com.biy.social.curvydolphin.model.FeedObject;
 import com.biy.social.curvydolphin.model.User;
 import com.biy.social.curvydolphin.model.Video;
 import com.biy.social.curvydolphin.repository.UserRepository;
@@ -32,13 +34,14 @@ public class FeedService {
 
     // in the future this will be an algorithm to determine which videos
     // this given user should be served
-    public List<Video> getFeed(){
+    public Feed getFeed(){
+        Feed feed = new Feed();
+
         User user = authorizationService.getCurrentAccount();
 
         // get list of videos they haven't posted
         List<VideoEntity> videoEntities = videoRepository.findVideosNotByUser(user.getUser_id());
 
-        List<Video> videos = new ArrayList<>();
 
         for (VideoEntity entity : videoEntities){
             Video video = Video.fromEntity(entity);
@@ -46,10 +49,10 @@ public class FeedService {
             video.setLikes(likesService.getLikeCount(video.getId()));
             video.setComments(commentsService.getCommentCount(video.getId()));
 
-            videos.add(video);
+            feed.add(new FeedObject(video, likesService.hasUserLikedVideo(video.getId(), user.getUser_id())));
         }
 
         // return
-        return videos;
+        return feed;
     }
 }

@@ -4,6 +4,7 @@ import com.biy.social.curvydolphin.entity.LikesEntity;
 import com.biy.social.curvydolphin.entity.VideoLikeId;
 import com.biy.social.curvydolphin.exceptions.LikesException;
 import com.biy.social.curvydolphin.model.Like;
+import com.biy.social.curvydolphin.model.User;
 import com.biy.social.curvydolphin.repository.LikesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class LikesService {
 
     @Autowired
     LikesRepository likesRepository;
+
+    @Autowired
+    AuthorizationService authorizationService;
 
     public List<Like> getLike(UUID videoId, Long userId) {
         VideoLikeId id = new VideoLikeId(videoId, userId);
@@ -76,8 +80,27 @@ public class LikesService {
         return likesRepository.countByVideoId(videoId);
     }
 
-    public boolean hasUserLikedVideo(UUID videoId,Long userId) {
+    public boolean hasUserLikedVideo(UUID videoId, Long userId) {
 
         return likesRepository.existsByVideoIdAndUserId(videoId, userId);
+    }
+
+    // toggles like for current user on a given video
+    // true = liked
+    // false = unliked
+    public boolean toggleLike(UUID videoId){
+        User user = authorizationService.getCurrentAccount();
+
+        boolean isLiked = hasUserLikedVideo(videoId, user.getUser_id());
+
+        if (isLiked){
+            // delete like
+            deleteLike(videoId, user.getUser_id());
+            return false;
+        } else {
+            // like that shit
+            createLike(new Like(videoId, user.getUser_id(), LocalDateTime.now()));
+            return true;
+        }
     }
 }

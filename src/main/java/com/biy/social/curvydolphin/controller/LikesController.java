@@ -90,4 +90,24 @@ public class LikesController {
         response.put("message", "video [" + video_id + "] unliked by [" + user_id + "]");
         return ResponseEntity.ok(response);
     }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PostMapping("/toggle")
+    public ResponseEntity<Map<String, String>> toggleLike(
+            @RequestHeader(value = "traceId") String traceId,
+            @RequestHeader(value = "video_id") UUID video_id) {
+
+        boolean result = likesService.toggleLike(video_id);
+
+        Map<String, String> response = new HashMap<String, String>();
+
+        if (result){
+            response.put("message", "video [" + video_id + "] liked");
+        } else {
+            response.put("message", "video [" + video_id + "] unliked");
+        }
+
+        return ResponseEntity.ok(response);
+
+    }
 }

@@ -3,6 +3,7 @@ package com.biy.social.curvydolphin.service;
 import com.biy.social.curvydolphin.entity.CommentsEntity;
 import com.biy.social.curvydolphin.exceptions.CommentsException;
 import com.biy.social.curvydolphin.model.Comment;
+import com.biy.social.curvydolphin.model.User;
 import com.biy.social.curvydolphin.repository.CommentsRepository;
 import com.biy.social.curvydolphin.repository.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class CommentsService {
 
     @Autowired
     CommentsRepository commentRepository;
+
+    @Autowired
+    AuthorizationService authorizationService;
 
     public Comment getComment(long id) {
         Optional<CommentsEntity> entity = commentRepository.findById(id);
@@ -49,6 +53,10 @@ public class CommentsService {
     }
 
     public Comment createComment(Comment comment) {
+        User user = authorizationService.getCurrentAccount();
+
+        comment.setUserId(user);
+
         CommentsEntity entity = comment.toEntity();
         entity.setId(null);
         entity.setCreatedAt(LocalDateTime.now());

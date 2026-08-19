@@ -5,27 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abce0ccb-5a69-4c07-a136-563fb0d3e003" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/curvy-dolphin.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ddls/seed.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ddls/seed.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/curvy-dolphin-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/curvy-dolphin-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/curvy-dolphin-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/curvy-dolphin-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Feed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/LikesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/entity/CommentsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/entity/CommentsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/CommentsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/CommentsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
