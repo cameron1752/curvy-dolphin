@@ -21,6 +21,12 @@ public class VideoService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    LikesService likesService;
+
+    @Autowired
+    CommentsService commentsService;
+
     // get by video ID
     public List<Video> getVideoById(UUID id){
         Optional<VideoEntity> videoEntity = videoRepository.getById(id);
@@ -28,7 +34,12 @@ public class VideoService {
         if (videoEntity.isEmpty()){
             throw new VideoException(id);
         } else {
-            return Collections.singletonList(Video.fromEntity(videoEntity.get()));
+            Video video = Video.fromEntity(videoEntity.get());
+
+            video.setLikes(likesService.getLikeCount(video.getId()));
+            video.setComments(commentsService.getCommentCount(video.getId()));
+
+            return Collections.singletonList(video);
         }
     }
 
@@ -44,7 +55,12 @@ public class VideoService {
         List<Video> videos = new ArrayList<>();
 
         for (VideoEntity entity : videoEntities){
-            videos.add(Video.fromEntity(entity));
+            Video video = Video.fromEntity(entity);
+
+            video.setLikes(likesService.getLikeCount(video.getId()));
+            video.setComments(commentsService.getCommentCount(video.getId()));
+
+            videos.add(video);
         }
 
         return videos;

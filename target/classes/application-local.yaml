@@ -1,0 +1,40 @@
+  spring:
+    config:
+      import: optional:application-secret.yaml
+    application:
+      name: curvy-dolphin
+    datasource:
+      # Connection URL (Default PostgreSQL port is 5432)
+      url: jdbc:postgresql://localhost:5432/cam
+      username: postgres
+      password:
+      driver-class-name: org.postgresql.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+    # used for adding default values into data service class
+    app:
+      use:
+        default: true
+    logging:
+      config:
+        classpath: logback.xml
+    security:
+      oauth2:
+        client:
+          registration:
+            google:
+              client-id: 784569823627-42f024jfpn179iussu8nr1s63evippkv.apps.googleusercontent.com
+              client-secret: ${GOOGLE_CLIENT_SECRET}
+              scope:
+                - openid
+                - profile
+                - email
+            github:
+              client-id: Ov23liwKSXDeZenKXoav
+              client-secret: ${GITHUB_CLIENT_SECRET}
+              scope:
+                - read:user
+                - user:email

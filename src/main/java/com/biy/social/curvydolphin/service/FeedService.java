@@ -10,6 +10,7 @@ import com.biy.social.curvydolphin.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,24 +22,34 @@ public class FeedService {
     VideoRepository videoRepository;
 
     @Autowired
-    UserRepository userRepository;
+    LikesService likesService;
+
+    @Autowired
+    CommentsService commentsService;
+
+    @Autowired
+    AuthorizationService authorizationService;
 
     // in the future this will be an algorithm to determine which videos
     // this given user should be served
-    public List<Video> getFeed(long user_id){
-        // confirm it's actual user
-        Optional<UserEntity> userEntity = userRepository.getByUserId(user_id);
-
-        if (userEntity.isEmpty()){
-            throw new UserException(user_id);
-        }
+    public List<Video> getFeed(){
+        User user = authorizationService.getCurrentAccount();
 
         // get list of videos they haven't posted
-        List<VideoEntity> videoEntities = videoRepository.findVideosNotByUser(user_id);
+        List<VideoEntity> videoEntities = videoRepository.findVideosNotByUser(user.getUser_id());
+
+        List<Video> videos = new ArrayList<>();
+
+        for (VideoEntity entity : videoEntities){
+            Video video = Video.fromEntity(entity);
+
+            video.setLikes(likesService.getLikeCount(video.getId()));
+            video.setComments(commentsService.getCommentCount(video.getId()));
+
+            videos.add(video);
+        }
+
         // return
-        return videoEntities
-                .stream()
-                .map(Video::fromEntity)
-                .toList();
+        return videos;
     }
 }

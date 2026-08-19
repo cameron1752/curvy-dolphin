@@ -25,6 +25,8 @@ public class Video {
     private String caption;
     private OffsetDateTime createdAt;
     private Visibility visibility;
+    private long likes;
+    private long comments;
 
     public Video(UUID id){
         this.id = id;
@@ -40,7 +42,9 @@ public class Video {
                 videoEntity.getLocationId(),
                 videoEntity.getCaption(),
                 videoEntity.getCreatedAt(),
-                videoEntity.getVisibility());
+                videoEntity.getVisibility(),
+                0,
+                0);
     }
 
     public VideoEntity toEntity() {
