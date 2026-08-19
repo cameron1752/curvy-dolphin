@@ -11,15 +11,13 @@ INSERT INTO curvy_dolphin.users
   (user_id, username, provider_id, email, name, avatar_url, created_at)
 OVERRIDING SYSTEM VALUE
 VALUES
-  (1, 'jmiller', 'google-oauth2|1000000001', 'j.miller@example.com', 'Jordan Miller', 'https://cdn.curvydolphin.com/avatars/jmiller.png', '2026-06-01 08:15:00'::timestamp),
-  (2, 'sarah_k', 'google-oauth2|1000000002', 'sarah.k@example.com', 'Sarah Kim', 'https://cdn.curvydolphin.com/avatars/sarahk.png', '2026-06-03 12:40:00'::timestamp),
-  (3, 'devon.t', 'google-oauth2|1000000003', 'devon.t@example.com', 'Devon Turner', 'https://cdn.curvydolphin.com/avatars/devont.png', '2026-06-05 17:05:00'::timestamp),
+  (1, 'cameron1752', '48843726', 'null', 'Cameron Knickerbocker', 'https://avatars.githubusercontent.com/u/48843726?v=4', '2026-06-01 08:15:00'::timestamp),
+  (2, 'camks12@gmail.com', '110160546422428323400', 'camks12@gmail.com', 'Cameron Knickerbocker', 'https://lh3.googleusercontent.com/a/ACg8ocIWrDDUt6NyQ-tfEkNX-H54WazMGAMboMOtUgSPzLzdkMlu4fS3=s96-c', '2026-06-03 12:40:00'::timestamp),
+  (3, 'camknickerbocker@gmail.com', '109722110280394943600', 'camknickerbocker@gmail.com', 'Cam Knickerbocker', 'https://lh3.googleusercontent.com/a/ACg8ocJXUn9QgqcjwGMh4scNjksu3twzwIxNpVBn61cUXmqARP-JCw=s96-c', '2026-06-05 17:05:00'::timestamp),
   (4, 'alex.r', 'google-oauth2|1000000004', 'alex.r@example.com', 'Alex Rivera', 'https://cdn.curvydolphin.com/avatars/alexr.png', '2026-06-17 09:30:00'::timestamp),
   (5, 'mia.p', 'google-oauth2|1000000005', 'mia.p@example.com', 'Mia Parker', 'https://cdn.curvydolphin.com/avatars/miap.png', '2026-06-18 11:20:00'::timestamp),
   (6, 'chris.d', 'google-oauth2|1000000006', 'chris.d@example.com', 'Chris Davis', 'https://cdn.curvydolphin.com/avatars/chrisd.png', '2026-06-19 14:10:00'::timestamp);
-1	"cameron1752"	"48843726"		"Cameron Knickerbocker"	"https://avatars.githubusercontent.com/u/48843726?v=4"	"2026-08-18 12:06:42.552868"
-2	"camks12@gmail.com"	"110160546422428323400"		"Cameron Knickerbocker"	"https://lh3.googleusercontent.com/a/ACg8ocIWrDDUt6NyQ-tfEkNX-H54WazMGAMboMOtUgSPzLzdkMlu4fS3=s96-c"	"2026-08-19 09:12:42.983344"
-3	"camknickerbocker@gmail.com"	"109722110280394943600"		"Cam Knickerbocker"	"https://lh3.googleusercontent.com/a/ACg8ocJXUn9QgqcjwGMh4scNjksu3twzwIxNpVBn61cUXmqARP-JCw=s96-c"	"2026-08-19 09:13:17.313805"
+
 SELECT setval(
   pg_get_serial_sequence('curvy_dolphin.users', 'user_id'),
   (SELECT MAX(user_id) FROM curvy_dolphin.users)
@@ -31,21 +29,19 @@ SELECT setval(
 INSERT INTO curvy_dolphin.videos
   (id, user_id, video_url, thumbnail_url, latitude, longitude, location_id, caption, created_at, visibility)
 VALUES
-  ('fb8fe72f-947e-4e7f-95b4-19828bb43559'::uuid, 1, 'https://cdn.curvydolphin.com/videos/v1001.mp4', 'https://cdn.curvydolphin.com/thumbs/v1001.jpg', 39.9526, -75.1652, 501, 'Sunset over the Schuylkill 🌅', '2026-06-10 18:30:00'::timestamptz, 'PUBLIC'),
-  ('50ac1eaf-aa95-4e4e-94c6-72b44a48d283'::uuid, 1, 'https://cdn.curvydolphin.com/videos/v1002.mp4', 'https://cdn.curvydolphin.com/thumbs/v1002.jpg', 39.95, -75.161, 502, 'Trying this new coffee spot ☕', '2026-06-12 09:05:00'::timestamptz, 'PUBLIC'),
-  ('196d1360-558c-4e28-b076-5dd78f62d81b'::uuid, 1, 'https://cdn.curvydolphin.com/videos/v1003.mp4', 'https://cdn.curvydolphin.com/thumbs/v1003.jpg', 39.954, -75.16, 503, 'Weekend hike recap', '2026-06-15 14:20:00'::timestamptz, 'FRIENDS'),
-  ('b745cfb4-0b43-4fe4-9a0a-1970b528c6ff'::uuid, 2, 'https://cdn.curvydolphin.com/videos/v2001.mp4', 'https://cdn.curvydolphin.com/thumbs/v2001.jpg', 40.7128, -74.006, 601, 'NYC skyline at night', '2026-06-11 20:00:00'::timestamptz, 'PUBLIC'),
-  ('ea4e8dc5-9532-49e2-8426-65f41f505a24'::uuid, 2, 'https://cdn.curvydolphin.com/videos/v2002.mp4', 'https://cdn.curvydolphin.com/thumbs/v2002.jpg', 40.7306, -73.9866, 602, 'Cooking pasta from scratch 🍝', '2026-06-14 19:15:00'::timestamptz, 'PUBLIC'),
-  ('89e0bfe4-fc43-481b-8649-1f699034c8d4'::uuid, 3, 'https://cdn.curvydolphin.com/videos/v3001.mp4', 'https://cdn.curvydolphin.com/thumbs/v3001.jpg', 34.0522, -118.2437, 701, 'Beach day 🏖️', '2026-06-13 15:45:00'::timestamptz, 'PUBLIC'),
-  ('3487cddb-ec03-480a-aca2-71318a2bb58f'::uuid, 3, 'https://cdn.curvydolphin.com/videos/v3002.mp4', 'https://cdn.curvydolphin.com/thumbs/v3002.jpg', 34.0195, -118.4912, 702, 'Skate park tricks', '2026-06-16 11:30:00'::timestamptz, 'PRIVATE'),
-
-  -- Additional videos for users 4-6
-  ('a81c4e27-93b5-4f16-b2d9-6c7e8a2f4002'::uuid, 4, 'https://cdn.curvydolphin.com/videos/v4001.mp4', 'https://cdn.curvydolphin.com/thumbs/v4001.jpg', 39.9528, -75.1641, 801, 'Best pizza I have had in Philly 🍕', '2026-06-18 18:20:00'::timestamptz, 'PUBLIC'),
-  ('7d3b9a12-6e4c-4a91-9c8f-2f7d5b1a3001'::uuid, 4, 'https://cdn.curvydolphin.com/videos/v4002.mp4', 'https://cdn.curvydolphin.com/thumbs/v4002.jpg', 39.9534, -75.1618, 802, 'Walking through Old City', '2026-06-19 08:45:00'::timestamptz, 'PUBLIC'),
-  ('c92e5f38-14d6-4a27-83e1-7f9b3c5d5003'::uuid, 5, 'https://cdn.curvydolphin.com/videos/v5001.mp4', 'https://cdn.curvydolphin.com/thumbs/v5001.jpg', 40.4406, -79.9959, 901, 'A weekend in Pittsburgh', '2026-06-19 15:10:00'::timestamptz, 'PUBLIC'),
-  ('e14f6a49-25e7-4b38-94f2-8a1c4d6e6004'::uuid, 5, 'https://cdn.curvydolphin.com/videos/v5002.mp4', 'https://cdn.curvydolphin.com/thumbs/v5002.jpg', 40.4421, -79.9972, 902, 'Sunset by the river', '2026-06-20 20:05:00'::timestamptz, 'PUBLIC'),
-  ('f25a7b50-36f8-4c49-a5e3-9b2d5f7a7005'::uuid, 6, 'https://cdn.curvydolphin.com/videos/v6001.mp4', 'https://cdn.curvydolphin.com/thumbs/v6001.jpg', 39.7392, -104.9903, 1001, 'Denver mountain views', '2026-06-20 16:40:00'::timestamptz, 'PUBLIC'),
-  ('b36c8d61-47a9-4d5a-b6f4-1c3e6a8b8006'::uuid, 6, 'https://cdn.curvydolphin.com/videos/v6002.mp4', 'https://cdn.curvydolphin.com/thumbs/v6002.jpg', 39.7395, -104.9891, 1002, 'Downtown after dark', '2026-06-21 21:30:00'::timestamptz, 'PUBLIC');
+  ('fb8fe72f-947e-4e7f-95b4-19828bb43559'::uuid, 1, 'https://cdn.curvydolphin.com/videos/v1001.mp4', '/temp_images/fb8fe72f-947e-4e7f-95b4-19828bb43559.jpg', 39.9526, -75.1652, 501, 'Sunset over the Schuylkill 🌅', '2026-06-10 18:30:00'::timestamptz, 'PUBLIC'),
+  ('50ac1eaf-aa95-4e4e-94c6-72b44a48d283'::uuid, 1, 'https://cdn.curvydolphin.com/videos/v1002.mp4', '/temp_images/50ac1eaf-aa95-4e4e-94c6-72b44a48d283.jpg', 39.95, -75.161, 502, 'Trying this new coffee spot ☕', '2026-06-12 09:05:00'::timestamptz, 'PUBLIC'),
+  ('196d1360-558c-4e28-b076-5dd78f62d81b'::uuid, 1, 'https://cdn.curvydolphin.com/videos/v1003.mp4', '/temp_images/196d1360-558c-4e28-b076-5dd78f62d81b.jpg', 39.954, -75.16, 503, 'Weekend hike recap', '2026-06-15 14:20:00'::timestamptz, 'FRIENDS'),
+  ('b745cfb4-0b43-4fe4-9a0a-1970b528c6ff'::uuid, 2, 'https://cdn.curvydolphin.com/videos/v2001.mp4', '/temp_images/b745cfb4-0b43-4fe4-9a0a-1970b528c6ff.jpg', 40.7128, -74.006, 601, 'NYC skyline at night', '2026-06-11 20:00:00'::timestamptz, 'PUBLIC'),
+  ('ea4e8dc5-9532-49e2-8426-65f41f505a24'::uuid, 2, 'https://cdn.curvydolphin.com/videos/v2002.mp4', '/temp_images/ea4e8dc5-9532-49e2-8426-65f41f505a24.jpg', 40.7306, -73.9866, 602, 'Cooking pasta from scratch 🍝', '2026-06-14 19:15:00'::timestamptz, 'PUBLIC'),
+  ('89e0bfe4-fc43-481b-8649-1f699034c8d4'::uuid, 3, 'https://cdn.curvydolphin.com/videos/v3001.mp4', '/temp_images/89e0bfe4-fc43-481b-8649-1f699034c8d4.jpg', 34.0522, -118.2437, 701, 'Beach day 🏖️', '2026-06-13 15:45:00'::timestamptz, 'PUBLIC'),
+  ('3487cddb-ec03-480a-aca2-71318a2bb58f'::uuid, 3, 'https://cdn.curvydolphin.com/videos/v3002.mp4', '/temp_images/3487cddb-ec03-480a-aca2-71318a2bb58f.jpg', 34.0195, -118.4912, 702, 'Skate park tricks', '2026-06-16 11:30:00'::timestamptz, 'PRIVATE'),
+  ('a81c4e27-93b5-4f16-b2d9-6c7e8a2f4002'::uuid, 4, 'https://cdn.curvydolphin.com/videos/v4001.mp4', '/temp_images/a81c4e27-93b5-4f16-b2d9-6c7e8a2f4002.jpg', 39.9528, -75.1641, 801, 'Best pizza I have had in Philly 🍕', '2026-06-18 18:20:00'::timestamptz, 'PUBLIC'),
+  ('7d3b9a12-6e4c-4a91-9c8f-2f7d5b1a3001'::uuid, 4, 'https://cdn.curvydolphin.com/videos/v4002.mp4', '/temp_images/7d3b9a12-6e4c-4a91-9c8f-2f7d5b1a3001.jpg', 39.9534, -75.1618, 802, 'Walking through Old City', '2026-06-19 08:45:00'::timestamptz, 'PUBLIC'),
+  ('c92e5f38-14d6-4a27-83e1-7f9b3c5d5003'::uuid, 5, 'https://cdn.curvydolphin.com/videos/v5001.mp4', '/temp_images/c92e5f38-14d6-4a27-83e1-7f9b3c5d5003.jpg', 40.4406, -79.9959, 901, 'A weekend in Pittsburgh', '2026-06-19 15:10:00'::timestamptz, 'PUBLIC'),
+  ('e14f6a49-25e7-4b38-94f2-8a1c4d6e6004'::uuid, 5, 'https://cdn.curvydolphin.com/videos/v5002.mp4', '/temp_images/e14f6a49-25e7-4b38-94f2-8a1c4d6e6004.jpg', 40.4421, -79.9972, 902, 'Sunset by the river', '2026-06-20 20:05:00'::timestamptz, 'PUBLIC'),
+  ('f25a7b50-36f8-4c49-a5e3-9b2d5f7a7005'::uuid, 6, 'https://cdn.curvydolphin.com/videos/v6001.mp4', '/temp_images/f25a7b50-36f8-4c49-a5e3-9b2d5f7a7005.jpg', 39.7392, -104.9903, 1001, 'Denver mountain views', '2026-06-20 16:40:00'::timestamptz, 'PUBLIC'),
+  ('b36c8d61-47a9-4d5a-b6f4-1c3e6a8b8006'::uuid, 6, 'https://cdn.curvydolphin.com/videos/v6002.mp4', '/temp_images/b36c8d61-47a9-4d5a-b6f4-1c3e6a8b8006.jpg', 39.7395, -104.9891, 1002, 'Downtown after dark', '2026-06-21 21:30:00'::timestamptz, 'PUBLIC');
 
 -- ============================================================
 -- ORIGINAL VIDEO INTERACTIONS

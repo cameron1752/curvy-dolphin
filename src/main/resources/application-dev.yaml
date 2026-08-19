@@ -7,7 +7,7 @@ spring:
     # Connection URL (Default PostgreSQL port is 5432)
     url: jdbc:postgresql://localhost:5432/cam
     username: postgres
-    password:
+    password: password
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
