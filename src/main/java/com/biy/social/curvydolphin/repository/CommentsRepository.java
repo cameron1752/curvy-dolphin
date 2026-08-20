@@ -13,7 +13,7 @@ public interface CommentsRepository extends JpaRepository<CommentsEntity, Commen
     Optional<CommentsEntity> findById(long id);
     List<CommentsEntity> findByVideoIdOrderByCreatedAtDesc(UUID videoId);
 
-    List<CommentsEntity> findByUserIdOrderByCreatedAtDesc(Long userId);
+    List<CommentsEntity> findByUser_UserIdOrderByCreatedAtDesc(Long userId);
 
     long countByVideoId(UUID videoId);
 }

@@ -49,7 +49,7 @@ public class FeedService {
             video.setLikes(likesService.getLikeCount(video.getId()));
             video.setComments(commentsService.getCommentCount(video.getId()));
 
-            feed.add(new FeedObject(video, likesService.hasUserLikedVideo(video.getId(), user.getUser_id())));
+            feed.add(new FeedObject(video, likesService.hasUserLikedVideo(video.getId())));
         }
 
         // return

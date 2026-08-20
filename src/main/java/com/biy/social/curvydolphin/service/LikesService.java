@@ -80,9 +80,10 @@ public class LikesService {
         return likesRepository.countByVideoId(videoId);
     }
 
-    public boolean hasUserLikedVideo(UUID videoId, Long userId) {
+    public boolean hasUserLikedVideo(UUID videoId) {
+        User user = authorizationService.getCurrentAccount();
 
-        return likesRepository.existsByVideoIdAndUserId(videoId, userId);
+        return likesRepository.existsByVideoIdAndUserId(videoId, user.getUser_id());
     }
 
     // toggles like for current user on a given video
@@ -91,7 +92,7 @@ public class LikesService {
     public boolean toggleLike(UUID videoId){
         User user = authorizationService.getCurrentAccount();
 
-        boolean isLiked = hasUserLikedVideo(videoId, user.getUser_id());
+        boolean isLiked = hasUserLikedVideo(videoId);
 
         if (isLiked){
             // delete like

@@ -25,7 +25,6 @@ public class Comment {
 
         entity.setId(id);
         entity.setVideoId(videoId);
-        entity.setUserId(userId.toEntity());
         entity.setText(text);
         entity.setCreatedAt(LocalDateTime.now());
 
@@ -36,7 +35,7 @@ public class Comment {
         return new Comment(
                 entity.getId(),
                 entity.getVideoId(),
-                User.fromEntity(entity.getUserId()),
+                User.fromEntity(entity.getUser()),
                 entity.getText(),
                 entity.getCreatedAt()
         );

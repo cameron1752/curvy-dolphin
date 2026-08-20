@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abce0ccb-5a69-4c07-a136-563fb0d3e003" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Feed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" afterDir="false" />
+    <list default="true" id="abce0ccb-5a69-4c07-a136-563fb0d3e003" name="Changes" comment="added comments integration to frontend, adjusted likes for frontend integration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/LikesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/entity/CommentsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/entity/CommentsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/CommentsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/CommentsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ddls/seed.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ddls/seed.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,23 +35,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CurvyDolphinApplication.executor": "Run",
-    "Application.dev.executor": "Run",
-    "Application.local.executor": "Run",
-    "Maven.curvy-dolphin [install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "backend__integration",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Cammy/IdeaProjects/curvy-dolphin/pom.xml",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CurvyDolphinApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.dev.executor&quot;: &quot;Run&quot;,
+    &quot;Application.local.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.curvy-dolphin [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;backend__integration&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Cammy/IdeaProjects/curvy-dolphin/pom.xml&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.dev">
     <configuration name="dev" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.biy.social.curvydolphin.CurvyDolphinApplication" />
@@ -101,5 +95,9 @@
       <updated>1787160808664</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added comments integration to frontend, adjusted likes for frontend integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comments integration to frontend, adjusted likes for frontend integration" />
   </component>
 </project>

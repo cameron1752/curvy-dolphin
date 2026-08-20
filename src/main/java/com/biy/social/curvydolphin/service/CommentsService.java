@@ -1,15 +1,16 @@
 package com.biy.social.curvydolphin.service;
 
 import com.biy.social.curvydolphin.entity.CommentsEntity;
+import com.biy.social.curvydolphin.entity.UserEntity;
 import com.biy.social.curvydolphin.exceptions.CommentsException;
+import com.biy.social.curvydolphin.exceptions.UserException;
 import com.biy.social.curvydolphin.model.Comment;
 import com.biy.social.curvydolphin.model.User;
 import com.biy.social.curvydolphin.repository.CommentsRepository;
-import com.biy.social.curvydolphin.repository.CommentsRepository;
+import com.biy.social.curvydolphin.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +21,8 @@ public class CommentsService {
 
     @Autowired
     CommentsRepository commentRepository;
-
+    @Autowired
+    UserRepository userRepository;
     @Autowired
     AuthorizationService authorizationService;
 
@@ -46,23 +48,30 @@ public class CommentsService {
     // get users comments
     public List<Comment> getCommentsByUser(Long userId) {
         return commentRepository
-                .findByUserIdOrderByCreatedAtDesc(userId)
+                .findByUser_UserIdOrderByCreatedAtDesc(userId)
                 .stream()
                 .map(Comment::fromEntity)
                 .toList();
     }
 
     public Comment createComment(Comment comment) {
-        User user = authorizationService.getCurrentAccount();
+        // get current user
+        User user_id = authorizationService.getCurrentAccount();
+        Optional <UserEntity> user = userRepository.getByUserId(user_id.getUser_id());
 
-        comment.setUserId(user);
+        if (user.isEmpty()){
+            throw new UserException(user_id.getUser_id());
+        }
 
+        // create entity object from incoming comment
         CommentsEntity entity = comment.toEntity();
+        // set permeable fields
+        entity.setUser(user.get());
         entity.setId(null);
         entity.setCreatedAt(LocalDateTime.now());
-        CommentsEntity savedEntity = commentRepository.save(entity);
 
-        return Comment.fromEntity(savedEntity);
+        // return the saved object
+        return Comment.fromEntity(commentRepository.save(entity));
     }
 
 

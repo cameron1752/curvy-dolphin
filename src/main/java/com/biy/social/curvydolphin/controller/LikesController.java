@@ -57,13 +57,11 @@ public class LikesController {
     @GetMapping("/check")
     public ResponseEntity<Map<String, String>> hasUserLikedVideo(
             @RequestHeader(value = "traceId") String traceId,
-            @RequestHeader(value = "video_id") UUID video_id,
-            @RequestHeader(value = "user_id") Long user_id) {
+            @RequestHeader(value = "video_id") UUID video_id) {
 
         Map<String, String> response = new HashMap<>();
         response.put("video_id", video_id.toString());
-        response.put("user_id", user_id.toString());
-        response.put("value", String.valueOf(likesService.hasUserLikedVideo(video_id, user_id)));
+        response.put("value", String.valueOf(likesService.hasUserLikedVideo(video_id)));
         return ResponseEntity.ok(response);
     }
 
