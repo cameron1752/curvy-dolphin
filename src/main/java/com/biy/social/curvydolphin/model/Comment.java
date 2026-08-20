@@ -16,7 +16,7 @@ public class Comment {
 
     private Long id;
     private UUID videoId;
-    private Long userId;
+    private User userId;
     private String text;
     private LocalDateTime createdAt;
 
@@ -25,7 +25,7 @@ public class Comment {
 
         entity.setId(id);
         entity.setVideoId(videoId);
-        entity.setUserId(userId);
+        entity.setUserId(userId.toEntity());
         entity.setText(text);
         entity.setCreatedAt(LocalDateTime.now());
 
@@ -36,7 +36,7 @@ public class Comment {
         return new Comment(
                 entity.getId(),
                 entity.getVideoId(),
-                entity.getUserId(),
+                User.fromEntity(entity.getUserId()),
                 entity.getText(),
                 entity.getCreatedAt()
         );

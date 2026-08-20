@@ -1,0 +1,1203 @@
+{
+	"info": {
+		"_postman_id": "5693e406-f737-4f0d-b822-19f3f5b515a4",
+		"name": "curvyDolphin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "GET users",
+					"protocolProfileBehavior": {
+						"disableCookies": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "0",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"cam\",\n    \"email\":\"camks12@gmail.com\",\n    \"name\":\"cam\",\n    \"avatar_url\":\"https://google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH users",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"cameron1752\",\n    \"email\":\"camks12@gmail.com\",\n    \"name\":\"cameron1752\",\n    \"avatar_url\":\"https://google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE users",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "3",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"cameron1752\",\n    \"email\":\"camks12@gmail.com\",\n    \"name\":\"cameron1752\",\n    \"avatar_url\":\"https://google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "videos",
+			"item": [
+				{
+					"name": "GET video by user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "4",
+								"type": "default"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{session_id}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET video by video id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST video",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"caption\": \"Test video 2!!\",\n        \"latitude\": 40.7484,\n        \"locationId\": 101,\n        \"longitude\": -73.9857,\n        \"userId\": {\n            \"user_id\": 4\n        },\n        \"visibility\": \"PRIVATE\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH video",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "185ad85a-71f6-436f-9eea-d7112d4b23aa",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"caption\": \"Test video 2!!\",\n        \"visibility\": \"PUBLIC\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE video",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "185ad85a-71f6-436f-9eea-d7112d4b23aa",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"cameron1752\",\n    \"email\":\"camks12@gmail.com\",\n    \"name\":\"cameron1752\",\n    \"avatar_url\":\"https://google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/videos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "GET comment by user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET comment by video id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET comment count by video",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/comments/count",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET comment by comment id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "comment_id",
+								"value": "1",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST video",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"videoId\": \"edcd558c-cdb6-4050-81ab-cae0cfed4bfb\",\n        \"userId\": 5,\n        \"text\": \"digging this!!\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH video",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "comment_id",
+								"value": "30",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"text\": \"REALLY digging this!!\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE video",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "comment_id",
+								"value": "30",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"cameron1752\",\n    \"email\":\"camks12@gmail.com\",\n    \"name\":\"cameron1752\",\n    \"avatar_url\":\"https://google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "likes",
+			"item": [
+				{
+					"name": "GET likes by user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/likes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET likes by video",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/likes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET likes by video and user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/likes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET like count",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/likes/count",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET like status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "edcd558c-cdb6-4050-81ab-cae0cfed4bfb",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/likes/check",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"videoId\": \"291c5cd2-4a02-47aa-be6c-e87420fde4d4\",\n        \"userId\": 5\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/likes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE like",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "291c5cd2-4a02-47aa-be6c-e87420fde4d4",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"cameron1752\",\n    \"email\":\"camks12@gmail.com\",\n    \"name\":\"cameron1752\",\n    \"avatar_url\":\"https://google.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/likes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feed",
+			"item": [
+				{
+					"name": "GET feed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/feed",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"feed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "video interactions",
+			"item": [
+				{
+					"name": "GET interactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "5",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "interaction_id",
+								"value": "3",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "video_id",
+								"value": "291c5cd2-4a02-47aa-be6c-e87420fde4d4",
+								"type": "default"
+							},
+							{
+								"key": "event_type",
+								"value": "LIKE",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/v1/interactions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"interactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST interactions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"userId\": 4,\n        \"videoId\": \"291c5cd2-4a02-47aa-be6c-e87420fde4d4\",\n        \"eventType\": \"COMMENT\",\n        \"watchDuration\": null,\n        \"videoDuration\": 60,\n        \"createdAt\": \"2026-08-11T13:03:55\",\n        \"latitude\": 39.976755,\n        \"longitude\": -75.190711\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/interactions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"interactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE interactions",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "interaction_id",
+								"value": "70",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"userId\": 4,\n        \"videoId\": \"291c5cd2-4a02-47aa-be6c-e87420fde4d4\",\n        \"eventType\": \"COMMENT\",\n        \"watchDuration\": null,\n        \"videoDuration\": 60,\n        \"createdAt\": \"2026-08-11T13:03:55\",\n        \"latitude\": 39.976755,\n        \"longitude\": -75.190711\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/interactions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"interactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET interactions count",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "291c5cd2-4a02-47aa-be6c-e87420fde4d4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"userId\": 4,\n        \"videoId\": \"291c5cd2-4a02-47aa-be6c-e87420fde4d4\",\n        \"eventType\": \"COMMENT\",\n        \"watchDuration\": null,\n        \"videoDuration\": 60,\n        \"createdAt\": \"2026-08-11T13:03:55\",\n        \"latitude\": 39.976755,\n        \"longitude\": -75.190711\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/interactions/count",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"interactions",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET interactions count by event type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "video_id",
+								"value": "291c5cd2-4a02-47aa-be6c-e87420fde4d4",
+								"type": "default"
+							},
+							{
+								"key": "event_type",
+								"value": "LIKE",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"userId\": 4,\n        \"videoId\": \"291c5cd2-4a02-47aa-be6c-e87420fde4d4\",\n        \"eventType\": \"COMMENT\",\n        \"watchDuration\": null,\n        \"videoDuration\": 60,\n        \"createdAt\": \"2026-08-11T13:03:55\",\n        \"latitude\": 39.976755,\n        \"longitude\": -75.190711\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/interactions/count/event",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"interactions",
+								"count",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET interactions count by user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "traceId",
+								"value": "{{traceId}}",
+								"type": "default"
+							},
+							{
+								"key": "user_id",
+								"value": "4",
+								"type": "default"
+							},
+							{
+								"key": "event_type",
+								"value": "LIKE",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"userId\": 4,\n        \"videoId\": \"291c5cd2-4a02-47aa-be6c-e87420fde4d4\",\n        \"eventType\": \"COMMENT\",\n        \"watchDuration\": null,\n        \"videoDuration\": 60,\n        \"createdAt\": \"2026-08-11T13:03:55\",\n        \"latitude\": 39.976755,\n        \"longitude\": -75.190711\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/v1/interactions/count/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"interactions",
+								"count",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"function generateTraceId(length = 32) {",
+					"  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';",
+					"  const charsLength = chars.length;",
+					"",
+					"",
+					"  ",
+					"  let traceId = '';",
+					"  for (let i = 0; i < length; i++) {",
+					"    traceId += chars[getRandomInteger(1, charsLength)];",
+					"  }",
+					"  ",
+					"    pm.collectionVariables.set(\"traceId\", traceId);",
+					"  return traceId;",
+					"}",
+					"",
+					"function getRandomInteger(min, max) {",
+					"  return Math.floor(Math.random() * (max - min + 1)) + min;",
+					"}",
+					"",
+					"function addHeader(){",
+					"const value = pm.collectionVariables.get(\"session_id\");",
+					"    console.log(\"From collection:\", value);",
+					"  ",
+					"            // Only upsert after the jar is successfully cleared",
+					"            pm.request.headers.upsert({",
+					"                key: \"Cookie\",",
+					"                value: value",
+					"            });",
+					"}",
+					"",
+					"addHeader();",
+					"generateTraceId(32);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "traceId",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "session_id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

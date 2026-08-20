@@ -52,6 +52,7 @@ public class CommentController {
         return ResponseEntity.ok(response);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping
     public ResponseEntity<Comment> createComment(
             @RequestBody Comment comment) {

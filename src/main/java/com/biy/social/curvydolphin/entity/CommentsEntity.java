@@ -23,8 +23,9 @@ public class CommentsEntity {
     @Column(name = "video_id", nullable = false)
     private UUID videoId;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity userId;
 
     @Column(name = "text", nullable = false)
     private String text;
