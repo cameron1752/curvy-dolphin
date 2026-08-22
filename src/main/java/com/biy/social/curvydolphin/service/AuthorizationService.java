@@ -5,13 +5,17 @@ import com.biy.social.curvydolphin.exceptions.UserException;
 import com.biy.social.curvydolphin.model.User;
 import com.biy.social.curvydolphin.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.generator.values.internal.GeneratedValuesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +24,9 @@ public class AuthorizationService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private Environment environment;
 
     public User createOrUpdateAccount(String provider, OAuth2User oauthUser){
 
@@ -70,6 +77,25 @@ public class AuthorizationService {
     }
 
     public User getCurrentAccount(){
+        List<String> profiles = Arrays.asList(environment.getActiveProfiles());
+
+        if (profiles.contains("local")){
+            log.info("using local static user");
+            return getLocalUser();
+        } else {
+            // use oauth user
+            log.info("using oauth user");
+            return getOAuthUser();
+        }
+
+
+    }
+
+    public User getLocalUser(){
+        return userService.getUserById(1);
+    }
+
+    public User getOAuthUser(){
         Authentication authentication =
                 SecurityContextHolder
                         .getContext()

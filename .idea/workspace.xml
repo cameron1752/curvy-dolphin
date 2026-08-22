@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abce0ccb-5a69-4c07-a136-563fb0d3e003" name="Changes" comment="added comments integration to frontend, adjusted likes for frontend integration">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/LikesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/LikesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Feed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/Feed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/AuthorizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/AuthorizationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ddls/seed.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ddls/seed.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +54,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.dev">
+  <component name="RunManager" selected="Application.local">
     <configuration name="dev" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.biy.social.curvydolphin.CurvyDolphinApplication" />
       <module name="curvy-dolphin" />
