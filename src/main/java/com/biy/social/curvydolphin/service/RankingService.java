@@ -24,13 +24,13 @@ public class RankingService {
 
     public Feed rankVideo(Feed feed, Location current){
         // location proximity
-        feed = scoreLocation(feed, current);
+//        feed = scoreLocation(feed, current);
         // video interactions recently
         // interactions
         feed = scoreInteractions(feed);
         // friends vs randoms
         // video age
-        feed = scoreAge(feed);
+//        feed = scoreAge(feed);
 
 
 
@@ -95,7 +95,7 @@ public class RankingService {
                 }
             }
 
-
+            feedObject.setScore(1.0);
 
 
             // look at completion rate
@@ -120,7 +120,9 @@ public class RankingService {
             // engagement rate
             engagement_rate = ((watch_rate * 2) + (like_rate * 4) + (comment_rate * 5) + (share_rate * 8)) - (skip_rate * 5);
 
-            feedObject.setScore(feedObject.getScore() + (feedObject.getScore() * engagement_rate) + (feedObject.getScore() * completion_rate));
+            double score = (feedObject.getScore() * engagement_rate) + (feedObject.getScore() * completion_rate);
+
+            feedObject.setScore(score);
 
             feedObject.setCompletionRate(completion_rate);
             feedObject.setWatchRate(watch_rate);
