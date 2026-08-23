@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abce0ccb-5a69-4c07-a136-563fb0d3e003" name="Changes" comment="added comments integration to frontend, adjusted likes for frontend integration">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/SeedClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/ScoreComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "cameron1752"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/cameron1752/curvy-dolphin.git",
+    "accountId": "8a6c5be0-a8d4-455d-a461-e86ba52786b9"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -37,16 +50,24 @@
   "keyToString": {
     "Application.CurvyDolphinApplication.executor": "Run",
     "Application.dev.executor": "Run",
-    "Application.local.executor": "Debug",
+    "Application.local.executor": "Run",
     "Maven.curvy-dolphin [install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "backend__integration",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Cammy/IdeaProjects/curvy-dolphin/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
@@ -83,6 +104,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,6 +122,9 @@
       <updated>1787160808664</updated>
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added comments integration to frontend, adjusted likes for frontend integration" />

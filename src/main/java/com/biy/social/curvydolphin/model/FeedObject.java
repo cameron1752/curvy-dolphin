@@ -14,13 +14,11 @@ import java.util.List;
 public class FeedObject {
     private Video video;
     private boolean isLiked;
+    private ScoreComponent scoreComponent;
     private double score;
     private double distance;
     private int age;
     private List<VideoInteraction> videoInteractionList;
-    private double completionRate;
-    private double watchRate;
-    private double engagementRate;
 
     public FeedObject(Video video, boolean isLiked){
         this.video = video;
