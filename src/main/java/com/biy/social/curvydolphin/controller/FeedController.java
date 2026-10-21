@@ -26,9 +26,12 @@ public class FeedController {
     @GetMapping
     public ResponseEntity<Feed> getFeed(@RequestHeader(value = "traceId") String traceId,
                                         @RequestHeader(value = "lat") Double latitude,
-                                        @RequestHeader(value = "long") Double longitude){
+                                        @RequestHeader(value = "long") Double longitude,
+                                        @RequestHeader(value = "seed", defaultValue = "false") boolean seed){
 
-//        seedClass.seed();
+        if (seed){
+            seedClass.seed();
+        }
         return ResponseEntity.ok(feedService.getFeed(new Location(latitude, longitude)));
     }
 

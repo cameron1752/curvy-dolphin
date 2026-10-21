@@ -828,6 +828,9 @@ VALUES
 UPDATE curvy_dolphin.videos
 SET thumbnail_url = '/temp_images/' || id || '.jpg';
 
+UPDATE curvy_dolphin.videos
+SET created_at = NOW() - (RANDOM() * INTERVAL '10 days');
+
 SELECT
     u.user_id,
     u.username,
@@ -840,3 +843,4 @@ LEFT JOIN curvy_dolphin.comments c ON c.user_id = u.user_id
 LEFT JOIN curvy_dolphin.video_likes l    ON l.user_id = u.user_id
 GROUP BY u.user_id, u.username
 ORDER BY u.user_id;
+
