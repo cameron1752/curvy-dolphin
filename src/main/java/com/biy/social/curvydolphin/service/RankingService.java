@@ -20,17 +20,17 @@ public class RankingService {
     @Autowired
     VideoInteractionsService videoInteractionsService;
 
-    int distance_threshold = 50;
+    int distance_threshold = Integer.MAX_VALUE;
 
     public Feed rankVideo(Feed feed, Location current){
         // location proximity
-//        feed = scoreLocation(feed, current);
+        feed = scoreLocation(feed, current);
         // video interactions recently
         // interactions
         feed = scoreInteractions(feed);
         // friends vs randoms
         // video age
-//        feed = scoreAge(feed);
+        feed = scoreAge(feed);
 
 
 
@@ -129,9 +129,6 @@ public class RankingService {
             feedObject.setEngagementRate(engagement_rate);
 
         }
-
-
-
 
         return feed;
     }

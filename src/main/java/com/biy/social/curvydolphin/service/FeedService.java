@@ -32,6 +32,9 @@ public class FeedService {
     @Autowired
     RankingService rankingService;
 
+    @Autowired
+    VideoInteractionsService interactionsService;
+
     // in the future this will be an algorithm to determine which videos
     // this given user should be served
     public Feed getFeed(Location current){
@@ -57,5 +60,38 @@ public class FeedService {
 
         // rank videos and return
        return rankingService.rankVideo(feed, current).sort();
+    }
+
+    // in the future this will be an algorithm to determine which videos
+    // this given user should be served
+    public Feed getFeed(Location current, Long userId){
+        // create feed object
+        Feed feed = new Feed();
+        // get list of videos they haven't posted
+        List<VideoEntity> videoEntities = videoRepository.findVideosNotByUser(userId);
+
+        // for each of the found videos
+        for (VideoEntity entity : videoEntities){
+            // entity -> pojo
+            Video video = Video.fromEntity(entity);
+            // if the video has already been seen by the user skip
+            if (!interactionsService.hasUserSeenVideo(userId, video.getId())){
+                // set likes & comments
+                video.setLikes(likesService.getLikeCount(video.getId()));
+                video.setComments(commentsService.getCommentCount(video.getId()));
+                // get liked status from current user
+                boolean hasLiked = likesService.hasUserLikedVideo(userId, video.getId());
+                // add feed object to feed with like status
+                feed.add(new FeedObject(video, hasLiked));
+
+                // rough pagination every 10 videos should be unique
+                if (feed.getCount() == 10){
+                    return rankingService.rankVideo(feed, current).sort();
+                }
+            }
+        }
+
+        // rank videos and return
+        return rankingService.rankVideo(feed, current).sort();
     }
 }

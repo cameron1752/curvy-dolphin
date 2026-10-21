@@ -105,4 +105,16 @@ public class VideoInteractionsService {
         return interactionRepository
                 .countByUserIdAndEventType(userId, eventType);
     }
+
+    public boolean hasUserSeenVideo(long userId, UUID videoId){
+        List<VideoInteraction> interactions = getInteractionsByUserAndEvent(userId, VideoInteractionEventType.IMPRESSION);
+
+        for (VideoInteraction interaction : interactions){
+            if (videoId.equals(interaction.getVideoId())){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

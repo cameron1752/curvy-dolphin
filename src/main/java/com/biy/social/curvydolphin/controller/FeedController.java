@@ -29,7 +29,17 @@ public class FeedController {
                                         @RequestHeader(value = "long") Double longitude){
 
 //        seedClass.seed();
-
         return ResponseEntity.ok(feedService.getFeed(new Location(latitude, longitude)));
+    }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("/{userId}")
+    public ResponseEntity<Feed> getFeedByUser(@RequestHeader(value = "traceId") String traceId,
+                                            @RequestHeader(value = "lat") Double latitude,
+                                            @RequestHeader(value = "long") Double longitude,
+                                            @PathVariable long userId){
+
+//        seedClass.seed();
+        return ResponseEntity.ok(feedService.getFeed(new Location(latitude, longitude), userId));
     }
 }

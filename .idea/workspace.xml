@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abce0ccb-5a69-4c07-a136-563fb0d3e003" name="Changes" comment="added comments integration to frontend, adjusted likes for frontend integration">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/SeedClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/FeedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/LikesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/VideoInteractionsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/VideoInteractionsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +42,13 @@
   "keyToString": {
     "Application.CurvyDolphinApplication.executor": "Run",
     "Application.dev.executor": "Run",
-    "Application.local.executor": "Debug",
+    "Application.local.executor": "Run",
     "Maven.curvy-dolphin [install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "backend__integration",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Cammy/IdeaProjects/curvy-dolphin/pom.xml",
+    "last_opened_file_path": "C:/Users/Cammy/documents real/IdeaProjects/trafic-simulation",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

@@ -4,12 +4,16 @@ import com.biy.social.curvydolphin.entity.UserEntity;
 import com.biy.social.curvydolphin.exceptions.UserException;
 import com.biy.social.curvydolphin.model.User;
 import com.biy.social.curvydolphin.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     UserRepository userRepository;
@@ -22,6 +26,17 @@ public class UserService {
         } else {
             return User.fromEntity(userEntity.get());
         }
+    }
+
+    public List<User> getUsers(){
+        List<UserEntity> userEntities = userRepository.getAllUsers();
+        List<User> response = new ArrayList<>();
+        for (UserEntity entity : userEntities){
+            response.add(User.fromEntity(entity));
+        }
+        log.info("Found {} users", response.size());
+
+        return response;
     }
 
     public User getByProviderId(String provider_id) throws UserException{

@@ -86,6 +86,10 @@ public class LikesService {
         return likesRepository.existsByVideoIdAndUserId(videoId, user.getUser_id());
     }
 
+    public boolean hasUserLikedVideo(long userId, UUID videoId) {
+        return likesRepository.existsByVideoIdAndUserId(videoId, userId);
+    }
+
     // toggles like for current user on a given video
     // true = liked
     // false = unliked

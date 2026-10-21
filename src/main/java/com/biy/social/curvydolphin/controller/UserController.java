@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,6 +31,13 @@ public class UserController {
         } else {
             return ResponseEntity.ok(userService.getUserById(id));
         }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<User>> getAllUsers(@RequestHeader(value = "traceId") String traceId){
+
+        return ResponseEntity.ok(userService.getUsers());
+
     }
 
     @PostMapping
