@@ -9,6 +9,7 @@ import com.biy.social.curvydolphin.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -83,15 +84,30 @@ public class FeedService {
                 boolean hasLiked = likesService.hasUserLikedVideo(userId, video.getId());
                 // add feed object to feed with like status
                 feed.add(new FeedObject(video, hasLiked));
-
-                // rough pagination every 10 videos should be unique
-                if (feed.getCount() == 10){
-                    return rankingService.rankVideo(feed, current).sort();
-                }
             }
         }
 
-        // rank videos and return
-        return rankingService.rankVideo(feed, current).sort();
+        // run ranking and sort on score
+        rankingService.rankVideo(feed, current).sort();
+
+        // only show top 10
+//        return feed.getCurrentFeed();
+        return getCurrentFeed(feed);
+    }
+
+    public Feed getCurrentFeed(Feed feed){
+        Feed currentFeed = new Feed();
+
+        List<FeedObject> feedObjects = feed.getFeedObjects();
+
+        for (FeedObject fO : feedObjects){
+            currentFeed.add(fO);
+
+            if (currentFeed.getCount() == 10){
+                return currentFeed;
+            }
+        }
+
+        return currentFeed;
     }
 }

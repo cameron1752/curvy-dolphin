@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 public class ScoreComponent {
 
     private double watch_rate;
+    private double age_hours;
     private double completion_rate;
     private double engagement_rate;
-    private double freshness;
+    private double freshnessScore;
+    private double engagementScore;
     private double skip;
     private double complete;
     private double play;
@@ -18,5 +20,6 @@ public class ScoreComponent {
     private double like;
     private double share;
     private double comment;
+    private double distanceScore;
 
 }

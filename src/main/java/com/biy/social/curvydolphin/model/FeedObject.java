@@ -23,6 +23,7 @@ public class FeedObject {
     public FeedObject(Video video, boolean isLiked){
         this.video = video;
         this.isLiked = isLiked;
+        this.scoreComponent = new ScoreComponent();
     }
 
     public int getAge(){

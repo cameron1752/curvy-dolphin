@@ -19,6 +19,8 @@ public class User {
     private String name;
     private String avatar_url;
     private LocalDateTime created_at;
+    private Double latitude;
+    private Double longitude;
 
     public static User fromEntity(UserEntity userEntity){
         return new User(userEntity.getUserId(),
@@ -27,7 +29,9 @@ public class User {
                 userEntity.getEmail(),
                 userEntity.getName(),
                 userEntity.getAvatarUrl(),
-                userEntity.getCreatedAt());
+                userEntity.getCreatedAt(),
+                userEntity.getLatitude(),
+                userEntity.getLongitude());
     }
 
     public UserEntity toEntity(){
@@ -39,6 +43,8 @@ public class User {
         entity.setName(this.name);
         entity.setAvatarUrl(this.avatar_url);
         entity.setCreatedAt(LocalDateTime.now());
+        entity.setLatitude(this.latitude);
+        entity.setLongitude(this.longitude);
 
         return entity;
     }
