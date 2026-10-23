@@ -22,153 +22,192 @@ public class RankingService {
 //    int distance_threshold = Integer.MAX_VALUE;
     int distance_threshold = 25;
     public Feed rankVideo(Feed feed, Location current){
-        // location proximity
-        feed = scoreLocation(feed, current);
-        // video interactions recently
-        feed = scoreAge(feed);
-        // interactions
-        feed = scoreInteractions(feed);
-        // friends vs randoms
-        // video age
-
-       return calculateScore(feed);
-    }
-
-    private Feed calculateScore(Feed feed) {
 
         for (FeedObject feedObject : feed.getFeedObjects()){
-            double score;
+            // location proximity
+            scoreLocation(feedObject, current);
+            // video interactions recently
+            // interactions
+            scoreInteractions(feedObject);
+            // video age
+            scoreAge(feedObject);
 
-            ScoreComponent scoreComponent = feedObject.getScoreComponent();
-
-            score = (scoreComponent.getFreshnessScore() * .10)
-                + (scoreComponent.getDistanceScore() * .70)
-                + (scoreComponent.getEngagementScore() * .20);
-
-            feedObject.setScore(score);
+            calculateScore(feedObject);
         }
 
         return feed;
     }
 
-    public Feed scoreInteractions(Feed feed){
-        // for each object
-        for (FeedObject feedObject : feed.getFeedObjects()){
-            // get the interactions
-            List<VideoInteraction> interactions = videoInteractionsService.getInteractionsByVideo(feedObject.getVideo().getId());
+    private void calculateScore(FeedObject feedObject) {
 
-            feedObject.setVideoInteractionList(interactions);
+        ScoreComponent scoreComponent = feedObject.getScoreComponent();
 
-            double completion_rate = 0.0;
-            double watch_rate = 0.0;
-            double engagement_rate = 0.0;
-            double like_rate = 0;
-            double comment_rate = 0;
-            double share_rate = 0;
-            double skip_rate = 0;
+        double score = (scoreComponent.getFreshnessScore() * .10)
+            + (scoreComponent.getDistanceScore() * .70)
+            + (scoreComponent.getEngagementScore() * .20);
 
-            ScoreComponent scoreComponent = feedObject.getScoreComponent();
-            VideoInteraction previousVi = interactions.getFirst();
-            // for each interaction
-            for (VideoInteraction vi : interactions){
-                log.info("video [{}] has this interaction [{}]", feedObject.getVideo().getId(), vi);
-                // get the score
-                feedObject.setScore(feedObject.getScore() + classifyInteraction(vi.getEventType()));
-                if (vi.getEventType() == WATCH_COMPLETE){
-                    scoreComponent.setComplete(scoreComponent.getComplete() + 1);
-                }
+        feedObject.setScore(score);
 
-                if (vi.getEventType() == PLAY){
-                    scoreComponent.setPlay(scoreComponent.getPlay() + 1);
-                }
+    }
 
-                if (vi.getEventType() == IMPRESSION){
-                    scoreComponent.setImpression(scoreComponent.getImpression() + 1);
-                }
+    public void scoreInteractions(FeedObject feedObject){
 
-                if (vi.getEventType() == LIKE){
-                    scoreComponent.setLike(scoreComponent.getLike() + 1);
-                }
+        // get the interactions
+        List<VideoInteraction> interactions = videoInteractionsService.getInteractionsByVideo(feedObject.getVideo().getId());
 
-                if (vi.getEventType() == COMMENT){
-                    scoreComponent.setComment(scoreComponent.getComment() + 1);
-                }
+        feedObject.setVideoInteractionList(interactions);
 
-                if (vi.getEventType() == SHARE){
-                    scoreComponent.setShare(scoreComponent.getShare() + 1);
-                }
+        double completion_rate  = 0.0;
+        double watch_rate       = 0.0;
+        double engagement_rate  = 0.0;
+        double like_rate        = 0.0;
+        double comment_rate     = 0.0;
+        double share_rate       = 0.0;
+        double skip_rate        = 0.0;
 
-                if (previousVi.getEventType() == WATCH_25 && vi.getEventType() == SKIP){
-                    scoreComponent.setSkip(scoreComponent.getSkip() + 1);
-                }else if (previousVi.getEventType() == WATCH_50 && vi.getEventType() == SKIP){
-                    scoreComponent.setSkip(scoreComponent.getSkip() + .5);
-                }else if (previousVi.getEventType() == WATCH_75 && vi.getEventType() == SKIP){
-                    scoreComponent.setSkip(scoreComponent.getSkip() + .25);
-                } else if (vi.getEventType() == SKIP){
-                    scoreComponent.setSkip(scoreComponent.getSkip() + 1);
-                }
-
-                previousVi = vi;
+        ScoreComponent scoreComponent = feedObject.getScoreComponent();
+        VideoInteraction previousVi = interactions.getFirst();
+        // for each interaction
+        for (VideoInteraction vi : interactions){
+            log.info("video [{}] has this interaction [{}]", feedObject.getVideo().getId(), vi);
+            // get the score
+            feedObject.setScore(feedObject.getScore() + classifyInteraction(vi.getEventType()));
+            if (vi.getEventType() == WATCH_COMPLETE){
+                scoreComponent.setComplete(scoreComponent.getComplete() + 1);
             }
 
-            feedObject.setScore(1.0);
-
-
-
-            // look at completion rate
-            // complete vs plays
-            completion_rate = scoreComponent.getComplete() / scoreComponent.getPlay();
-
-            // watch rate
-            watch_rate = scoreComponent.getPlay() / scoreComponent.getImpression();
-
-            // like rate
-            like_rate = scoreComponent.getLike() / scoreComponent.getPlay();
-
-            // comment rate
-            comment_rate = scoreComponent.getComment() / scoreComponent.getPlay();
-
-            // share
-            share_rate = scoreComponent.getShare() / scoreComponent.getPlay();
-
-            // skip rate
-            skip_rate = scoreComponent.getSkip() / scoreComponent.getPlay();
-
-            // engagement rate
-            engagement_rate =
-                    ((like_rate * 6) +
-                    (comment_rate * 8) +
-                    (share_rate * 10)) -
-                    (skip_rate * 5);
-
-//
-            double score =
-                    (watch_rate * .40)
-                    + (completion_rate * .15)
-                    + (engagement_rate * .35);
-
-            if (feedObject.getVideo().getId().toString().equals("b746bbbc-78a8-48a3-9fb7-92410f8d8196")){
-                log.info ("just need to stop");
+            if (vi.getEventType() == PLAY){
+                scoreComponent.setPlay(scoreComponent.getPlay() + 1);
             }
 
-            if (Double.isNaN(score)){
-                scoreComponent.setEngagementScore(0.0);
-            } else {
-                scoreComponent.setEngagementScore(score);
+            if (vi.getEventType() == IMPRESSION){
+                scoreComponent.setImpression(scoreComponent.getImpression() + 1);
             }
 
+            if (vi.getEventType() == LIKE){
+                scoreComponent.setLike(scoreComponent.getLike() + 1);
+            }
 
-////            feedObject.setScore(score);
+            if (vi.getEventType() == COMMENT){
+                scoreComponent.setComment(scoreComponent.getComment() + 1);
+            }
 
-            scoreComponent.setEngagement_rate(engagement_rate);
-            scoreComponent.setCompletion_rate(completion_rate);
-            scoreComponent.setWatch_rate(watch_rate);
+            if (vi.getEventType() == SHARE){
+                scoreComponent.setShare(scoreComponent.getShare() + 1);
+            }
 
-            feedObject.setScoreComponent(scoreComponent);
+            if (previousVi.getEventType() == WATCH_50 && vi.getEventType() == SKIP){
+                scoreComponent.setSkip(scoreComponent.getSkip() + .5);
+            } else if (previousVi.getEventType() == WATCH_75 && vi.getEventType() == SKIP){
+                scoreComponent.setSkip(scoreComponent.getSkip() + .25);
+            } else if (vi.getEventType() == SKIP){
+                scoreComponent.setSkip(scoreComponent.getSkip() + 1);
+            }
 
+            previousVi = vi;
         }
 
-        return feed;
+        // look at completion rate
+        // complete vs plays
+        completion_rate = scoreComponent.getComplete() / scoreComponent.getPlay();
+
+        // watch rate
+        watch_rate = scoreComponent.getPlay() / scoreComponent.getImpression();
+
+        // like rate
+        like_rate = scoreComponent.getLike() / scoreComponent.getPlay();
+
+        // comment rate
+        comment_rate = scoreComponent.getComment() / scoreComponent.getPlay();
+
+        // share
+        share_rate = scoreComponent.getShare() / scoreComponent.getPlay();
+
+        // skip rate
+        skip_rate = scoreComponent.getSkip() / scoreComponent.getPlay();
+
+        // engagement rate
+        engagement_rate =
+                ((like_rate * 6) +
+                (comment_rate * 8) +
+                (share_rate * 10)) -
+                (skip_rate * 5);
+
+        double score =
+                (watch_rate * .40)
+                + (completion_rate * .15)
+                + (engagement_rate * .35);
+
+        if (feedObject.getVideo().getId().toString().equals("b746bbbc-78a8-48a3-9fb7-92410f8d8196")){
+            log.info ("just need to stop");
+        }
+
+        if (Double.isNaN(score)){
+            scoreComponent.setEngagementScore(0.0);
+        } else {
+            scoreComponent.setEngagementScore(score);
+        }
+
+        scoreComponent.setEngagement_rate(engagement_rate);
+        scoreComponent.setCompletion_rate(completion_rate);
+        scoreComponent.setWatch_rate(watch_rate);
+
+        feedObject.setScoreComponent(scoreComponent);
+    }
+
+
+    // method that adjusts the current score based on the age of the video
+    // math is like this:
+    // log base e (2) (higher number provides steeper curve)
+    // divided by halflife age (in hours)
+    // final score is ( e ^ - LAMBDA * (age in hours) ) * 10
+    // exponential decay for age
+    public void scoreAge(FeedObject feedObject){
+        double LAMBDA = Math.log(2) / HALFLIFE_AGE;
+
+        double freshness = Duration.between(feedObject.getVideo().getCreatedAt(), OffsetDateTime.now()).toMinutes() / 60.0;
+        double score = Math.exp(-LAMBDA * freshness) * 10;
+
+        feedObject.getScoreComponent().setAge_hours(freshness);
+
+        if (Double.isNaN(score)){
+            feedObject.getScoreComponent().setFreshnessScore(0.0);
+        } else {
+            feedObject.getScoreComponent().setFreshnessScore(score);
+        }
+    }
+
+
+    // method that adjusts the current score based on the age of the video
+    // math is like this:
+    // log base e (16) (higher number provides steeper curve)
+    // divided by halflife distance threshold (km)
+    // final score is ( e ^ - LAMBDA * (distance threshold (km)) ) * 10
+    // exponential decay for distance
+    public void scoreLocation(FeedObject feedObject, Location current){
+        // closer is better
+        double LAMBDA = Math.log(16) / distance_threshold;
+
+
+        if (feedObject.getVideo().getId().toString().equals("b746bbbc-78a8-48a3-9fb7-92410f8d8196")){
+            log.info ("just need to stop");
+        }
+
+        Video video = feedObject.getVideo();
+        Location videoLoc = new Location(video.getLatitude(), video.getLongitude());
+        double distance = getDistance(current, videoLoc);
+        // current location vs video location
+        log.info("distance between me and video location: {} km", distance);
+
+        double score;
+        if (distance > distance_threshold){
+            score = 0.0;
+        } else {
+            score = Math.exp(-LAMBDA * distance) * 10;
+        }
+
+        feedObject.setDistance(distance);
+        feedObject.getScoreComponent().setDistanceScore(score);
     }
 
     public double classifyInteraction(VideoInteractionEventType type){
@@ -196,69 +235,6 @@ public class RankingService {
             default:
                 return 0.0;
         }
-    }
-
-    // method that adjusts the current score based on the age of the video
-    // math is like this:
-    // log base e (2) (higher number provides steeper curve)
-    // divided by halflife age (in hours)
-    // final score is ( e ^ - LAMBDA * (age in hours) ) * 10
-    // exponential decay for age
-    public Feed scoreAge(Feed feed){
-        double LAMBDA = Math.log(2) / HALFLIFE_AGE;
-
-        for (FeedObject feedObject : feed.getFeedObjects()){
-            double freshness = Duration.between(feedObject.getVideo().getCreatedAt(), OffsetDateTime.now()).toMinutes() / 60.0;;
-            double score = Math.exp(-LAMBDA * freshness) * 10;
-
-            feedObject.getScoreComponent().setAge_hours(freshness);
-
-            if (Double.isNaN(score)){
-                feedObject.getScoreComponent().setFreshnessScore(0.0);
-            } else {
-                feedObject.getScoreComponent().setFreshnessScore(score);
-            }
-
-        }
-
-        return feed;
-    }
-
-
-    // method that adjusts the current score based on the age of the video
-    // math is like this:
-    // log base e (16) (higher number provides steeper curve)
-    // divided by halflife distance threshold (km)
-    // final score is ( e ^ - LAMBDA * (distance threshold (km)) ) * 10
-    // exponential decay for distance
-    public Feed scoreLocation(Feed feed, Location current){
-        // closer is better
-        double LAMBDA = Math.log(16) / distance_threshold;
-
-        for (FeedObject feedObject : feed.getFeedObjects()){
-            if (feedObject.getVideo().getId().toString().equals("b746bbbc-78a8-48a3-9fb7-92410f8d8196")){
-                log.info ("just need to stop");
-            }
-
-            Video video = feedObject.getVideo();
-            Location videoLoc = new Location(video.getLatitude(), video.getLongitude());
-            double distance = getDistance(current, videoLoc);
-            // current location vs video location
-            log.info("distance between me and video location: {} km", distance);
-
-            double score;
-            if (distance > distance_threshold){
-                score = 0.0;
-            } else {
-                score = Math.exp(-LAMBDA * distance) * 10;
-            }
-
-            feedObject.setDistance(distance);
-            feedObject.getScoreComponent().setDistanceScore(score);
-
-        }
-
-        return feed;
     }
 
     // distance calculation in km

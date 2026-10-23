@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb40dac1-a49d-4ed9-a576-d9035ab44947" name="Changes" comment="added comments integration to frontend, adjusted likes for frontend integration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/FeedObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/ScoreComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/ScoreComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/FeedService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +46,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.CurvyDolphinApplication.executor": "Run",
-    "Application.local.executor": "Run",
+    "Application.local.executor": "Debug",
     "git-widget-placeholder": "backend__integration"
   }
 }]]></component>
