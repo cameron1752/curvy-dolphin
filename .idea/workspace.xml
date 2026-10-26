@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cb40dac1-a49d-4ed9-a576-d9035ab44947" name="Changes" comment="added comments integration to frontend, adjusted likes for frontend integration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/ScoreComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/model/ScoreComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/biy/social/curvydolphin/service/RankingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
