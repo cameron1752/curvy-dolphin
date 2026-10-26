@@ -231,6 +231,10 @@ public class RankingService {
         return 10 * Math.exp(-Math.log(2) / halflife * Math.max(0, x));
     }
 
+    // function to normalize values between 0 and 1 given a target value and
+    // the actual value used to normalize rates of interactions
+    // keeps everything in the same scale
+    // actualValue = .5 targetValue = .5 -> .5 / (1) -> .5
     private double normalize(double actualValue, double targetValue){
         return actualValue / (actualValue + targetValue);
     }
@@ -263,36 +267,10 @@ public class RankingService {
 
     // smoothing function to do a few things:
     // 1 - prevents NaN or errors due to 0s
-    // 2 - prevents 1 play with 1 like blowing up artificially
+    // 2 - prevents 1 play with 1 like blowing up artificially by injecting artificial data
+    // at our target rate
     private static double smoothed(double hits, double trials, double priorRate){
         return (hits + priorRate * prior_strength) / (trials + prior_strength);
-    }
-
-    public double classifyInteraction(VideoInteractionEventType type){
-        switch (type){
-            case IMPRESSION:
-                return 0.0;
-            case PLAY:
-                return .25;
-            case WATCH_25:
-                return .5;
-            case WATCH_50:
-                return 1.0;
-            case WATCH_75:
-                return 1.25;
-            case WATCH_COMPLETE:
-                return 3.0;
-            case LIKE:
-                return 2.0;
-            case COMMENT:
-                return 3.0;
-            case SHARE:
-                return 4.0;
-            case SKIP:
-                return -5.0;
-            default:
-                return 0.0;
-        }
     }
 
     // distance calculation in km
