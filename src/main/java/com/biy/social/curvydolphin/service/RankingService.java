@@ -21,7 +21,7 @@ public class RankingService {
     VideoInteractionsService videoInteractionsService;
     private static final int age_halflife = 96;
     private static final int distance_halflife = 25;
-    private static final int flat_zone_distance = 5;
+    private static final int flat_zone_distance = 10;
     private static final double prior_strength = 20.0;
 
     // interaction score weights
